@@ -63,44 +63,59 @@ This is v1 of the project currently.
 
 ## Requirements Installation
 ### Clone repo:
+```
 git clone <your-repo-url>
 cd <your-repo-name>
-
+```
 ### Create & activate virtual environment:
 macOS / Linux:
+```
 python3 -m venv venv
 source venv/bin/activate
-
+```
 Windows (PowerShell):
+```
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-
+```
 
 ### Install dependencies:
+```
 pip install -r requirements.txt
+```
 or install packages manually if you prefer.
 
 ## How to run (examples)
 Make sure data/rockets_pivoted.xlsx exists before running the generator/training.
 
 1. Generate synthetic dataset
+```
 python src/synthetic_data_generation.py
+```
 Output: data/synthetic_rockets_pivoted.xlsx, data/synthetic_rockets_pivoted.csv, data/synthetic_generation_report.json.
 
 2. Quick look at the real data
+```
 python src/real_data.py
+```
 Prints head of real dataset and columns.
 
 35. Inspect real vs synthetic visual comparison
+```
 python src/synthetic_vs_real_data_visualisation.py
+```
 Creates plots comparing selected key parameters side-by-side and a scatter matrix.
 
 4. Feature importance analysis
+```
 python src/feature_importance_analysis.py
+```
 Trains RF/LGB/XGB on synthetic data and prints / plots top 10 features for rockets with and without transfer stage.
 
 5. Train models and validate on real rockets
+```
 python src/training_and_validation.py
+```
 Full pipeline: preprocessing → outlier removal → train models for both rocket groups (with/without transfer) → save plots/tables/models → load real data and run validation → create plots & tables with metrics and error analyses.
 The script creates results/ and subfolders automatically.
 
