@@ -1,0 +1,9 @@
+Rocket,Actual,Random Forest Pred,Random Forest Error%,LightGBM Pred,LightGBM Error%,XGBoost Pred,XGBoost Error%
+ABL RS1 (Ursa),186.0,54.0,-71.0%,N/A,N/A,59.6,-67.9%
+Blue Origin New Glenn (2-stage),1068.0,1772.9,+66.0%,N/A,N/A,2303.4,+115.7%
+Northrop Grumman Antares 230,241.0,447.1,+85.5%,N/A,N/A,499.4,+107.2%
+Orbital Antares 100,240.0,336.5,+40.2%,N/A,N/A,335.3,+39.7%
+SpaceX Falcon 9 FT,3836.0,1076.8,-71.9%,N/A,N/A,1218.3,-68.2%
+SpaceX Falcon 9 V1.1,169.0,1076.8,+537.2%,N/A,N/A,1218.3,+620.9%
+ULA Atlas V 401,2085.0,602.6,-71.1%,N/A,N/A,779.6,-62.6%
+ULA Delta-IV Medium,2112.0,753.4,-64.3%,N/A,N/A,748.5,-64.6%

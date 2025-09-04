@@ -1,0 +1,20 @@
+Rocket,Actual,Random Forest Pred,Random Forest Error%,LightGBM Pred,LightGBM Error%,XGBoost Pred,XGBoost Error%
+ABL RS1 (Inhouse),779.0,626.4,-19.6%,N/A,N/A,579.1,-25.7%
+ABL RS1 (Ursa),818.0,561.7,-31.3%,N/A,N/A,560.7,-31.5%
+Blue Origin New Glenn (2-stage),42104.0,9878.9,-76.5%,N/A,N/A,14239.0,-66.2%
+Firefly Alpha,625.0,898.5,+43.8%,N/A,N/A,642.7,+2.8%
+Launcher Medium,444.0,562.3,+26.7%,N/A,N/A,536.3,+20.8%
+Launcher Rocket -1,638.0,704.0,+10.3%,N/A,N/A,544.8,-14.6%
+Northrop Grumman Antares 230,5923.0,4587.6,-22.5%,N/A,N/A,5300.0,-10.5%
+Orbital Antares 100,4160.0,3144.5,-24.4%,N/A,N/A,3684.1,-11.4%
+Relativity Terran 1,1065.0,1022.4,-4.0%,N/A,N/A,977.2,-8.2%
+Rocket Lab Neutron (Archimedes),6938.0,7036.1,+1.4%,N/A,N/A,7958.0,+14.7%
+SpaceX Falcon 1E,540.0,622.0,+15.2%,N/A,N/A,788.1,+45.9%
+SpaceX Falcon 9 FT,20976.0,10291.5,-50.9%,N/A,N/A,10946.1,-47.8%
+SpaceX Falcon 9 V1,7282.0,7038.1,-3.3%,N/A,N/A,6985.8,-4.1%
+SpaceX Falcon 9 V1.1,12208.0,10291.5,-15.7%,N/A,N/A,10946.1,-10.3%
+SpaceX Starship,158053.0,13850.4,-91.2%,N/A,N/A,10948.4,-93.1%
+ULA Atlas V 401,9804.0,7144.7,-27.1%,N/A,N/A,7442.0,-24.1%
+ULA Delta-IV Medium,10146.0,8040.2,-20.8%,N/A,N/A,8538.8,-15.8%
+Virgin Orbit LauncherOne,400.0,300.5,-24.9%,N/A,N/A,269.6,-32.6%
+Yuzhnoye Zenit-2,13209.0,9805.9,-25.8%,N/A,N/A,10422.2,-21.1%

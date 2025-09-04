@@ -1,0 +1,6 @@
+Rocket,Actual,Random Forest Pred,Random Forest Error%,LightGBM Pred,LightGBM Error%,XGBoost Pred,XGBoost Error%
+Blue Origin New Glenn(3-st),13924.0,N/A,N/A,N/A,N/A,N/A,N/A
+Launcher XL,119.0,N/A,N/A,N/A,N/A,N/A,N/A
+NASA Saturn V,29570.0,N/A,N/A,N/A,N/A,N/A,N/A
+Rocket Lab Electron Improved,2.5,N/A,N/A,N/A,N/A,N/A,N/A
+Yuzhnoye Zenit-3SL,2817.0,N/A,N/A,N/A,N/A,N/A,N/A
