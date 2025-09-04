@@ -1,3 +1,7 @@
+# This is the main code that trains the model and then applies those params to real data and plots for visualisation purposes.
+# It first removes the outliers (data that is too far off from mean) to ensure that errors dont skyrocket.
+# The inputs for the models have been selected using results from the (feature_importance_analysis.py) file.
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,13 +17,13 @@ import os
 import json
 from datetime import datetime
 
-# ---------------------- Paths ----------------------
+# Loading paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)
 DATA_DIR = os.path.join(BASE_DIR, "data")
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
 
-# Create results directory if it doesn't exist
+# Create results directory to save all output PNGs and CSVs
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Create subdirectories for better organization
@@ -449,9 +453,7 @@ if len(X_without_transfer_clean) > 0:
     print("\nRandom Forest parameters for rockets without transfer stage:")
     print(models_without['Random Forest'].get_params())
 
-# =====================================================
-# VALIDATION ON REAL ROCKET DATA
-# =====================================================
+# VALIDATION ON REAL ROCKET DATA ---------------------------------------------------------------------------------------------------------
 
 def load_and_preprocess_real_data(file_path):
     """

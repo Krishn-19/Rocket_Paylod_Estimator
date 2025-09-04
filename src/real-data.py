@@ -1,3 +1,5 @@
+# Just to visualise what the data looks like.
+
 import pandas as pd
 import os
 

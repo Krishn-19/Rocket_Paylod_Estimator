@@ -1,3 +1,5 @@
+# This script helps generate sensible synthetic data which is used to train the model.
+
 import os
 import math
 import numpy as np
@@ -7,7 +9,7 @@ import json
 import warnings
 warnings.filterwarnings("ignore")
 
-
+# Globalising all paths
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
@@ -22,7 +24,6 @@ G0 = 9.80665
 MIN_LIFTOFF_TW = 1.2
 
 np.random.seed(RANDOM_SEED)
-
 
 def safe_array(x):
     a = np.array(x, dtype=float)
@@ -87,7 +88,7 @@ wide = long.pivot(index='Rocket', columns='col', values='Value')
 # Reset rocket index to a column for ease
 wide = wide.reset_index().rename(columns={'Rocket': 'rocket_name'})
 
-# ---------------------- Extract empirical distributions ----------------------
+# Extracting empirical distributions
 # Payload to orbits are present in Stage == 'Payload(kg)' and Parameter in {LEO, ISS, SSO, MEO, GEO}
 orbit_names = ['LEO', 'ISS', 'SSO', 'MEO', 'GEO']
 payload_leo_samples = []
@@ -183,7 +184,7 @@ for o in orbit_names:
             else:
                 orbit_median_multiplier[o] = 0.5
 
-# ---------------------- Prepare distributions for stage sampling ----------------------
+# Preparing distributions for stage sampling 
 # We'll collect per-stage arrays keyed by stage label strings existing in the input (e.g. '1st Stage', '2nd Stage', 'Transfer Stage')
 stage_labels = raw['Stage'].unique().tolist()
 # Exclude payload stage from stage_labels for stage generation logic
@@ -242,7 +243,7 @@ for st in stage_labels_no_payload:
         d['s_vals'] = svals
     dists[st] = d
 
-# ---------------------- Generator for one rocket ----------------------
+# Define the generator for one rocket and we can call it for multiple later
 def generate_one_rocket(dists, payload_leo_samples, orbit_median_multiplier, baseline_total_dv):
     """
     Returns a dict with flattened keys:
@@ -396,7 +397,7 @@ def generate_one_rocket(dists, payload_leo_samples, orbit_median_multiplier, bas
 
     return flat
 
-# ---------------------- Generate N synthetic rockets ----------------------
+# Now we generate N synthetic rockets
 synthetic_flat_list = []
 failed = 0
 print("Generating synthetic rockets... (this may take a moment)")
@@ -409,7 +410,7 @@ for i in range(N_SYNTH):
 
 print(f"Finished generation: successful={len(synthetic_flat_list)}, failed_attempts={failed}")
 
-# ---------------------- Build pivoted output (same shape as input) ----------------------
+# The output needs to be pivoted so it can be same as the input.
 # Column names "Rocket 1" .. "Rocket N"
 rocket_names_out = [f"Rocket {i+1}" for i in range(len(synthetic_flat_list))]
 

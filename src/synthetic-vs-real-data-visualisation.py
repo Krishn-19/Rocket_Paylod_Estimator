@@ -1,3 +1,5 @@
+# Helps visualise the data to serve as a reality check ensuring the data makes sense. 
+
 import os
 import numpy as np
 import pandas as pd
@@ -5,21 +7,21 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas.plotting import scatter_matrix
 
-# ---------------------- Paths ----------------------
+# Paths
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # assumes this script is in src/
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 REAL_FILE = os.path.join(DATA_DIR, "rockets_pivoted.xlsx")
 SYNTHETIC_FILE = os.path.join(DATA_DIR, "synthetic_rockets_pivoted.xlsx")
 
-# === Load your datasets ===
+# Loading datasets
 real_df = pd.read_excel(REAL_FILE)
 synthetic_df = pd.read_excel(SYNTHETIC_FILE)
 
 real_df = real_df.set_index(["Stage", "Parameter"])
 synthetic_df = synthetic_df.set_index(["Stage", "Parameter"])
 
-# === Select key parameters to compare ===
+# Key comparison parameters
 key_params = [
     ("1st Stage", "Average Isp (s)"),
     ("1st Stage", "Delta-v (m/s)"),
@@ -32,11 +34,11 @@ key_params = [
 
 real_selected = real_df.loc[key_params]
 
-# randomly select 100 synthetic rockets
+# randomly select 100 synthetic rockets to avoid overcrowing the graphs
 synthetic_sampled_cols = np.random.choice(synthetic_df.columns, size=100, replace=False)
 synthetic_selected = synthetic_df.loc[key_params, synthetic_sampled_cols]
 
-# === Plot side-by-side comparison ===
+# Side by side comparison
 for param in key_params:
     plt.figure(figsize=(8,5))
     plt.plot(real_selected.columns, real_selected.loc[param], marker='o', label="Real")
@@ -48,7 +50,7 @@ for param in key_params:
     plt.tight_layout()
     plt.show()
 
-# === Scatter matrix (with only sampled synthetic) ===
+# Scatter matrix to evaluate relationships
 real_for_scatter = real_selected.T
 synthetic_for_scatter = synthetic_selected.T
 

@@ -1,3 +1,6 @@
+# This script helps identify the most important features that contribute to the output, i.e., payload. With this, we can 
+# tailor our inputs when training different models to get maximum efficiency and minimize errors.
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +11,7 @@ import lightgbm as lgb
 import xgboost as xgb
 import os
 
-# ---------------------- Paths ----------------------
+# Globalising all pathways
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -17,10 +20,10 @@ SYNTHETIC_FILE = os.path.join(DATA_DIR, "synthetic_rockets_pivoted.csv")
 # Read the CSV file
 df = pd.read_csv(SYNTHETIC_FILE)
 
-# Set random seed for reproducibility
+# This helps produce the 'same' random values everytime.
 np.random.seed(42)
 
-# Transpose the data
+# Since the excel file has the rocket data per column instead of in one row, we need to transpose the data.
 df_transposed = df.set_index(['Stage', 'Parameter']).T
 df_transposed.reset_index(inplace=True)
 df_transposed.rename(columns={'index': 'Rocket'}, inplace=True)
@@ -31,7 +34,7 @@ y = df_transposed[target_columns].copy()
 y.columns = ['LEO', 'ISS', 'SSO', 'MEO', 'GEO']
 X = df_transposed.drop(columns=target_columns, errors='ignore')
 
-# Identify rockets with and without transfer stage
+# Identify rockets with and without transfer stage to streamline predictions into two different categories.
 has_transfer = ~X[('Transfer Stage', 'Delta-v (m/s)')].isna()
 
 # Split data
